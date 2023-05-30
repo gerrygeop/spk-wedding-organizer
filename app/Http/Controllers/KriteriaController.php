@@ -41,7 +41,7 @@ class KriteriaController extends Controller
         DB::transaction(function () use ($validated) {
             $kriteria = Kriteria::create([
                 'nama' => $validated['nama'],
-                'bobot' => $validated['bobot'],
+                'bobot' => floatval($validated['bobot']),
             ]);
 
             $kriteria->subKriteria()->createMany($validated['sub_kriteria']);
@@ -80,7 +80,7 @@ class KriteriaController extends Controller
         DB::transaction(function () use ($validated, $kriteria) {
             $kriteria->update([
                 'nama' => $validated['nama'],
-                'bobot' => $validated['bobot'],
+                'bobot' => floatval($validated['bobot']),
             ]);
 
             $kriteria->subKriteria()->delete();

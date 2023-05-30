@@ -105,10 +105,7 @@ export default function Create({ kriteria }) {
                                     className="mt-1 block w-full"
                                     autoComplete="bobot"
                                     onChange={(e) =>
-                                        setData(
-                                            "bobot",
-                                            parseFloat(e.target.value)
-                                        )
+                                        setData("bobot", e.target.value)
                                     }
                                     required
                                 />

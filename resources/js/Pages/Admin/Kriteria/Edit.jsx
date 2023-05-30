@@ -18,7 +18,6 @@ export default function Edit({ kriteria }) {
             },
         ],
     });
-    console.log(data);
 
     const submit = (e) => {
         e.preventDefault();
@@ -106,10 +105,7 @@ export default function Edit({ kriteria }) {
                                     className="mt-1 block w-full"
                                     autoComplete="bobot"
                                     onChange={(e) =>
-                                        setData(
-                                            "bobot",
-                                            parseFloat(e.target.value)
-                                        )
+                                        setData("bobot", e.target.value)
                                     }
                                     required
                                 />
