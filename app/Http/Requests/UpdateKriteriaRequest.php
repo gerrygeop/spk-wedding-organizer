@@ -11,7 +11,7 @@ class UpdateKriteriaRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return false;
+        return true;
     }
 
     /**
@@ -22,7 +22,11 @@ class UpdateKriteriaRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nama' => ['required', 'string'],
+            'bobot' => ['required'],
+            'sub_kriteria' => ['required', 'array'],
+            'sub_kriteria.*.nama' => ['required', 'string', 'max:255'],
+            'sub_kriteria.*.bobot' => ['required', 'min:1'],
         ];
     }
 }

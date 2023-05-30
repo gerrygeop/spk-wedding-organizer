@@ -14,6 +14,8 @@ class Kriteria extends Model
     protected $table = 'kriteria';
     protected $guarded = ['id'];
 
+    protected $with = ['subKriteria'];
+
     public function subKriteria(): HasMany
     {
         return $this->hasMany(SubKriteria::class);
