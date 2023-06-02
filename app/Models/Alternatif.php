@@ -15,6 +15,6 @@ class Alternatif extends Model
 
     public function kriteria(): BelongsToMany
     {
-        return $this->belongsToMany(Kriteia::class, 'alternatif_kriteria')->withPivot('nilai');
+        return $this->belongsToMany(Kriteria::class, 'alternatif_kriteria')->withPivot('nilai');
     }
 }
