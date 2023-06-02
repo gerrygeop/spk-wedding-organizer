@@ -3,7 +3,7 @@ import DangerButton from "@/Components/DangerButton";
 import Modal from "@/Components/Modal";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, router, useForm } from "@inertiajs/react";
 import { useState } from "react";
 
@@ -21,13 +21,7 @@ export default function Show({ alternatif }) {
     };
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    {alternatif.nama}
-                </h2>
-            }
-        >
+        <AdminLayout>
             <Head title="Alternatif" />
 
             <Container>
@@ -127,6 +121,6 @@ export default function Show({ alternatif }) {
                     </div>
                 </form>
             </Modal>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }

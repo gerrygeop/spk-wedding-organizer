@@ -2,7 +2,7 @@ import Container, { Board, Section } from "@/Components/Container";
 import DangerButton from "@/Components/DangerButton";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, router } from "@inertiajs/react";
 
 export default function Show({ kriteria }) {
@@ -15,13 +15,7 @@ export default function Show({ kriteria }) {
     };
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Kriteria {kriteria.nama}
-                </h2>
-            }
-        >
+        <AdminLayout>
             <Head title="Kriteria" />
 
             <Container>
@@ -110,6 +104,6 @@ export default function Show({ kriteria }) {
                     </Section>
                 </Board>
             </Container>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }

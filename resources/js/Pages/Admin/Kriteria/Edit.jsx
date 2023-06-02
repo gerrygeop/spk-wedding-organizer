@@ -1,14 +1,14 @@
-import Container, { Board, Section } from "@/Components/Container";
+import Container, { Board } from "@/Components/Container";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link, router, useForm } from "@inertiajs/react";
+import AdminLayout from "@/Layouts/AdminLayout";
+import { Head, Link, useForm } from "@inertiajs/react";
 
 export default function Edit({ kriteria }) {
-    const { data, setData, patch, processing, errors, reset } = useForm({
+    const { data, setData, patch, processing, errors } = useForm({
         nama: kriteria?.nama || "",
         bobot: kriteria?.bobot || "",
         sub_kriteria: kriteria?.sub_kriteria || [
@@ -60,13 +60,7 @@ export default function Edit({ kriteria }) {
     };
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Kriteria
-                </h2>
-            }
-        >
+        <AdminLayout>
             <Head title="Kriteria" />
 
             <Container>
@@ -240,6 +234,6 @@ export default function Edit({ kriteria }) {
                     </div>
                 </Board>
             </Container>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }

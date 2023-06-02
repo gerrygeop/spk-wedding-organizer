@@ -4,12 +4,12 @@ import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Head, Link, router, useForm } from "@inertiajs/react";
+import AdminLayout from "@/Layouts/AdminLayout";
+import { Head, Link, useForm } from "@inertiajs/react";
 import { useEffect } from "react";
 
 export default function Edit({ alternatif, kriteria }) {
-    const { data, setData, patch, processing, errors, reset } = useForm({
+    const { data, setData, patch, processing, errors } = useForm({
         nama: alternatif.nama || "",
         kriteria: {},
     });
@@ -33,13 +33,7 @@ export default function Edit({ alternatif, kriteria }) {
     };
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Alternatif
-                </h2>
-            }
-        >
+        <AdminLayout>
             <Head title="Alternatif" />
 
             <Container>
@@ -135,6 +129,6 @@ export default function Edit({ alternatif, kriteria }) {
                     </div>
                 </Board>
             </Container>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }

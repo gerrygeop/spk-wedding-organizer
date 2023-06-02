@@ -1,7 +1,7 @@
 import Container, { Board, Section } from "@/Components/Container";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
-import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
+import AdminLayout from "@/Layouts/AdminLayout";
 import { Head, Link, router } from "@inertiajs/react";
 
 export default function Index({ alternatif, kriteria }) {
@@ -10,13 +10,7 @@ export default function Index({ alternatif, kriteria }) {
     };
 
     return (
-        <AuthenticatedLayout
-            header={
-                <h2 className="font-semibold text-xl text-gray-800 leading-tight">
-                    Alternatif
-                </h2>
-            }
-        >
+        <AdminLayout>
             <Head title="Alternatif" />
 
             <Container>
@@ -81,6 +75,6 @@ export default function Index({ alternatif, kriteria }) {
                     </Section>
                 </Board>
             </Container>
-        </AuthenticatedLayout>
+        </AdminLayout>
     );
 }

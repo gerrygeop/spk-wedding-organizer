@@ -21,7 +21,7 @@ export default function Navbar() {
                             </Link>
                         </div>
 
-                        <div className="hidden space-x-8 sm:-my-px sm:ml-10 sm:flex">
+                        <div className="hidden">
                             {user.role === "admin" ? (
                                 <>
                                     <NavLink
@@ -150,12 +150,26 @@ export default function Navbar() {
             >
                 <div className="pt-2 pb-3 space-y-1">
                     {user.role === "admin" ? (
-                        <ResponsiveNavLink
-                            href={route("admin.dashboard")}
-                            active={route().current("admin.dashboard")}
-                        >
-                            Dashboard
-                        </ResponsiveNavLink>
+                        <>
+                            <ResponsiveNavLink
+                                href={route("admin.dashboard")}
+                                active={route().current("admin.dashboard")}
+                            >
+                                Dashboard
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("alternatif.index")}
+                                active={route().current("alternatif.*")}
+                            >
+                                Alternatif
+                            </ResponsiveNavLink>
+                            <ResponsiveNavLink
+                                href={route("kriteria.index")}
+                                active={route().current("kriteria.*")}
+                            >
+                                Kriteria
+                            </ResponsiveNavLink>
+                        </>
                     ) : (
                         <ResponsiveNavLink
                             href={route("dashboard")}
@@ -172,7 +186,7 @@ export default function Navbar() {
                             {user.name}
                         </div>
                         <div className="font-medium text-sm text-gray-500">
-                            {user.email}
+                            {user.username}
                         </div>
                     </div>
 
