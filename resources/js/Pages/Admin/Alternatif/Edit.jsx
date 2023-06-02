@@ -1,4 +1,4 @@
-import Container, { Board, Section } from "@/Components/Container";
+import Container, { Board } from "@/Components/Container";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
@@ -47,7 +47,10 @@ export default function Edit({ alternatif, kriteria }) {
                     <div className="max-w-2xl p-6 md:p-8">
                         <form onSubmit={submit}>
                             <div>
-                                <InputLabel htmlFor="nama" value="Nama" />
+                                <InputLabel
+                                    htmlFor="nama"
+                                    value="Nama Alternatif"
+                                />
 
                                 <TextInput
                                     id="nama"
@@ -68,7 +71,13 @@ export default function Edit({ alternatif, kriteria }) {
                                 />
                             </div>
 
-                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-4">
+                            <div className="mt-10">
+                                <h3 className="text-lg text-gray-800 font-semibold">
+                                    Matriks Penilaian --
+                                </h3>
+                            </div>
+
+                            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mt-2">
                                 {kriteria.map((ktr) => (
                                     <div key={ktr.id} className="col-span-1">
                                         <InputLabel
