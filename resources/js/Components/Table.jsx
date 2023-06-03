@@ -3,7 +3,7 @@ const Table = ({ children }) => {
         <div className="flex flex-col">
             <div className="-mx-4 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div className="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
-                    <div className="overflow-hidden">
+                    <div className="overflow-hidden border rounded">
                         <table className="min-w-full">{children}</table>
                     </div>
                 </div>
@@ -14,7 +14,9 @@ const Table = ({ children }) => {
 
 const Thead = ({ children, className }) => {
     return (
-        <thead className={`bg-white border-b border-gray-300 ${className}`}>
+        <thead
+            className={`bg-emerald-500 border-b border-gray-300 ${className}`}
+        >
             {children}
         </thead>
     );
@@ -32,7 +34,7 @@ const Th = ({ children, className, ...props }) => {
     return (
         <th
             {...props}
-            className={`px-4 py-3 text-gray-500 text-left text-xs font-semibold uppercase tracking-wider ${className}`}
+            className={`px-4 py-3 text-white text-left text-xs font-semibold uppercase tracking-wider ${className}`}
         >
             {children}
         </th>

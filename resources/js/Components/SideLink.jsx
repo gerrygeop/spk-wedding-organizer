@@ -10,7 +10,7 @@ export default function SideLink({
         <Link
             {...props}
             className={
-                "flex items-center mx-2 mt-2.5 text-base py-1.5 pl-3 border-l-2 focus:outline-none " +
+                "flex items-center mt-2.5 text-sm py-1.5 pl-3 border-l-2 focus:outline-none " +
                 (active
                     ? "border-l-emerald-500 text-emerald-600 font-medium "
                     : "border-l-transparent text-gray-600 hover:text-gray-800 hover:border-l-gray-300 focus:text-gray-900 ") +
