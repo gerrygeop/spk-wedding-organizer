@@ -3,7 +3,7 @@ import DangerButton from "@/Components/DangerButton";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, router } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 
 export default function Show({ kriteria }) {
     const editKriteria = () => {
@@ -16,8 +16,6 @@ export default function Show({ kriteria }) {
 
     return (
         <AdminLayout>
-            <Head title="Kriteria" />
-
             <Container>
                 <Board>
                     <Section>

@@ -5,7 +5,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -61,8 +61,6 @@ export default function Create() {
 
     return (
         <AdminLayout>
-            <Head title="Kriteria" />
-
             <Container>
                 <Board>
                     <div className="max-w-2xl p-6 md:p-8">

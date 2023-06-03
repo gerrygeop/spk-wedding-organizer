@@ -2,7 +2,7 @@ import Container, { Board, Section } from "@/Components/Container";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, Link, router } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 
 export default function Index({ kriteria }) {
     const createNew = () => {
@@ -11,8 +11,6 @@ export default function Index({ kriteria }) {
 
     return (
         <AdminLayout>
-            <Head title="Kriteria" />
-
             <Container>
                 <Board>
                     <Section>
@@ -34,7 +32,7 @@ export default function Index({ kriteria }) {
                                     kriteria.map((ktr) => (
                                         <tr key={ktr.id}>
                                             <Table.Td>
-                                                <span className="capitalize font-semibold text-gray-800">
+                                                <span className="capitalize text-sm text-gray-800">
                                                     {ktr.nama}
                                                 </span>
                                             </Table.Td>

@@ -5,7 +5,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, Link, useForm } from "@inertiajs/react";
+import { Link, useForm } from "@inertiajs/react";
 import { useEffect } from "react";
 
 export default function Edit({ alternatif, kriteria }) {
@@ -34,8 +34,6 @@ export default function Edit({ alternatif, kriteria }) {
 
     return (
         <AdminLayout>
-            <Head title="Alternatif" />
-
             <Container>
                 <Board>
                     <div className="max-w-2xl p-6 md:p-8">

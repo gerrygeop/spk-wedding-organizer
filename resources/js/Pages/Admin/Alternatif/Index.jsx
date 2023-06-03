@@ -2,7 +2,7 @@ import Container, { Board, Section } from "@/Components/Container";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, Link, router } from "@inertiajs/react";
+import { Link, router } from "@inertiajs/react";
 
 export default function Index({ alternatif, kriteria }) {
     const createNew = () => {
@@ -11,8 +11,6 @@ export default function Index({ alternatif, kriteria }) {
 
     return (
         <AdminLayout>
-            <Head title="Alternatif" />
-
             <Container>
                 <Board>
                     <Section>
@@ -39,7 +37,7 @@ export default function Index({ alternatif, kriteria }) {
                                     alternatif.map((alt) => (
                                         <tr key={alt.id}>
                                             <Table.Td>
-                                                <span className="capitalize font-semibold text-gray-800">
+                                                <span className="capitalize text-sm text-gray-800">
                                                     {alt.nama}
                                                 </span>
                                             </Table.Td>

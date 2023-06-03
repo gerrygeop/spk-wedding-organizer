@@ -4,7 +4,7 @@ import Modal from "@/Components/Modal";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Head, router, useForm } from "@inertiajs/react";
+import { router, useForm } from "@inertiajs/react";
 import { useState } from "react";
 
 export default function Show({ alternatif }) {
@@ -22,8 +22,6 @@ export default function Show({ alternatif }) {
 
     return (
         <AdminLayout>
-            <Head title="Alternatif" />
-
             <Container>
                 <Board>
                     <Section>
