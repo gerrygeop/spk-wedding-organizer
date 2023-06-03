@@ -2,8 +2,16 @@ import SideLink from "@/Components/SideLink";
 
 export default function Sidebar() {
     return (
-        <div className="fixed hidden lg:block lg:w-64">
-            <div className="flex flex-col md:h-screen bg-transparent py-10 px-6">
+        <div className="bg-white fixed hidden lg:block lg:w-64 border-r">
+            <div className="flex flex-col md:h-screen bg-transparent py-6 px-4">
+                <div className="flex-shrink-0 flex items-center mx-5 mb-10">
+                    <img
+                        src="https://img.logoipsum.com/289.svg"
+                        alt="Logo"
+                        className="w-24"
+                    />
+                </div>
+
                 <nav>
                     <SideLink
                         href={route("admin.dashboard")}
@@ -26,7 +34,7 @@ export default function Sidebar() {
                         <span className="tracking-wide">Alternatif</span>
                     </SideLink>
 
-                    <div className="mt-10">
+                    <div className="mt-8">
                         <h5 className="font-bold text-xs text-gray-800 tracking-wider uppercase">
                             TOPSIS
                         </h5>

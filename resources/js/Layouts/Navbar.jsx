@@ -1,9 +1,8 @@
 import { useState } from "react";
-import ApplicationLogo from "@/Components/ApplicationLogo";
 import Dropdown from "@/Components/Dropdown";
 import NavLink from "@/Components/NavLink";
 import ResponsiveNavLink from "@/Components/ResponsiveNavLink";
-import { Link, usePage } from "@inertiajs/react";
+import { usePage } from "@inertiajs/react";
 
 export default function Navbar() {
     const user = usePage().props.auth.user;
@@ -11,14 +10,22 @@ export default function Navbar() {
         useState(false);
 
     return (
-        <nav className="bg-white border-b border-gray-100">
-            <div className="max-w-[100rem] mx-auto px-4 sm:px-6 lg:px-8">
+        <nav className="bg-white border-b">
+            <div className="lg:hidden p-2 pt-4 border">
+                <div className="flex items-center justify-start space-x-2">
+                    <img
+                        src="https://img.logoipsum.com/289.svg"
+                        alt="Logo"
+                        className="w-24"
+                    />
+                </div>
+            </div>
+
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex">
                         <div className="shrink-0 flex items-center">
-                            <Link href="/">
-                                <ApplicationLogo className="block h-9 w-auto fill-current text-gray-800" />
-                            </Link>
+                            <h1>SPK</h1>
                         </div>
 
                         <div className="hidden">
@@ -56,7 +63,7 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="hidden sm:flex sm:items-center sm:ml-6">
+                    <div className="hidden lg:flex lg:items-center lg:ml-6">
                         <div className="ml-3 relative">
                             <Dropdown>
                                 <Dropdown.Trigger>
@@ -99,7 +106,7 @@ export default function Navbar() {
                         </div>
                     </div>
 
-                    <div className="-mr-2 flex items-center sm:hidden">
+                    <div className="-mr-2 flex items-center lg:hidden">
                         <button
                             onClick={() =>
                                 setShowingNavigationDropdown(
@@ -145,7 +152,7 @@ export default function Navbar() {
             <div
                 className={
                     (showingNavigationDropdown ? "block" : "hidden") +
-                    " sm:hidden"
+                    " lg:hidden w-full bg-white shadow-lg border absolute left-0 z-50"
                 }
             >
                 <div className="pt-2 pb-3 space-y-1">
@@ -178,6 +185,55 @@ export default function Navbar() {
                             Dashboard
                         </ResponsiveNavLink>
                     )}
+
+                    <div className="mt-10 p-4 border-t">
+                        <h5 className="font-bold text-xs text-gray-900 tracking-wider uppercase">
+                            {">"} TOPSIS
+                        </h5>
+                    </div>
+
+                    <ResponsiveNavLink
+                        href={route("normalisasi-matrix")}
+                        active={route().current("normalisasi-matrix")}
+                    >
+                        <span className="tracking-wide">Normalisasi</span>
+                    </ResponsiveNavLink>
+                    <ResponsiveNavLink
+                        href={route("normalisasi-matrix-terbobot")}
+                        active={route().current("normalisasi-matrix-terbobot")}
+                    >
+                        <span className="tracking-wide">
+                            Normalisasi Terbobot
+                        </span>
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        href={route("solusi-ideal")}
+                        active={route().current("solusi-ideal")}
+                    >
+                        <span className="tracking-wide">Solusi Ideal</span>
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        href={route("jarak-ideal")}
+                        active={route().current("jarak-ideal")}
+                    >
+                        <span className="tracking-wide">Jarak Ideal</span>
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        href={route("preferensi")}
+                        active={route().current("preferensi")}
+                    >
+                        <span className="tracking-wide">Preferensi</span>
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
+                        href={route("ranking")}
+                        active={route().current("ranking")}
+                    >
+                        <span className="tracking-wide">Ranking</span>
+                    </ResponsiveNavLink>
                 </div>
 
                 <div className="pt-4 pb-1 border-t border-gray-200">
