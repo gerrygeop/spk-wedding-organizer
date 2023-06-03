@@ -3,6 +3,7 @@
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\TopsisController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -45,6 +46,13 @@ Route::middleware('auth')->group(function () {
         Route::resource('alternatif', AlternatifController::class);
         Route::resource('kriteria', KriteriaController::class)->parameters(['kriteria' => 'kriteria']);
     });
+
+    Route::get('normalisasi-matrix', [TopsisController::class, 'stepOne'])->name('normalisasi-matrix');
+    Route::get('normalisasi-matrix-terbobot', [TopsisController::class, 'stepTwo'])->name('normalisasi-matrix-terbobot');
+    Route::get('solusi-ideal', [TopsisController::class, 'stepThree'])->name('solusi-ideal');
+    Route::get('jarak-ideal', [TopsisController::class, 'stepFour'])->name('jarak-ideal');
+    Route::get('preferensi', [TopsisController::class, 'stepFive'])->name('preferensi');
+    Route::get('ranking', [TopsisController::class, 'ranking'])->name('ranking');
 });
 
 require __DIR__ . '/auth.php';
