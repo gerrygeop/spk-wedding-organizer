@@ -8,6 +8,14 @@ export default function StepFour({ data }) {
             <Container>
                 <Board>
                     <Section>
+                        <div className="flex items-center justify-between mb-2">
+                            <h3 className="font-semibold text-2xl text-gray-600">
+                                Jarak Ideal Positif &#40;S<sub>i</sub>
+                                <sup>&#43;</sup>&#41; & Negatif &#40;S
+                                <sub>i</sub>
+                                <sup>&#45;</sup>&#41;
+                            </h3>
+                        </div>
                         <Table>
                             <Table.Thead>
                                 <tr>

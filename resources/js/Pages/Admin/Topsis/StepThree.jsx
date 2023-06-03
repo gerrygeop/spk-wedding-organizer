@@ -8,6 +8,12 @@ export default function StepThree({ kriteria, minmax }) {
             <Container>
                 <Board>
                     <Section>
+                        <div className="flex items-center justify-between mb-2">
+                            <h3 className="font-semibold text-2xl text-gray-600">
+                                Solusi Ideal Positif &#40;A<sup>&#43;</sup>&#41;
+                                & Negatif &#40;A<sup>&#45;</sup>&#41;
+                            </h3>
+                        </div>
                         <Table>
                             <Table.Thead>
                                 <tr>

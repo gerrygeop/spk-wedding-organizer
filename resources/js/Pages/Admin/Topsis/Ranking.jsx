@@ -8,6 +8,11 @@ export default function Ranking({ data }) {
             <Container>
                 <Board>
                     <Section>
+                        <div className="flex items-center justify-between mb-2">
+                            <h3 className="font-semibold text-2xl text-gray-600">
+                                Hasil Ranking
+                            </h3>
+                        </div>
                         <Table>
                             <Table.Thead>
                                 <tr>

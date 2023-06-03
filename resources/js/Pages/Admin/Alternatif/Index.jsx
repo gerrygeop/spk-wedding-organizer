@@ -4,7 +4,7 @@ import { IconPlus } from "@/Components/IconPlus";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { Link, router } from "@inertiajs/react";
+import { router } from "@inertiajs/react";
 
 export default function Index({ alternatif, kriteria }) {
     const handleCreateButton = () => {
@@ -16,7 +16,10 @@ export default function Index({ alternatif, kriteria }) {
             <Container>
                 <Board>
                     <Section>
-                        <div className="flex items-center justify-end mb-4">
+                        <div className="flex items-center justify-between mb-4">
+                            <h3 className="font-semibold text-2xl text-gray-700">
+                                Daftar Alternatif
+                            </h3>
                             <PrimaryButton
                                 type="button"
                                 onClick={handleCreateButton}
