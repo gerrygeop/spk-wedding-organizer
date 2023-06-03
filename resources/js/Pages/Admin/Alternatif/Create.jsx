@@ -3,9 +3,10 @@ import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
+import SelectInput from "@/Components/SelectInput";
 import TextInput from "@/Components/TextInput";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Link, useForm } from "@inertiajs/react";
+import { router, useForm } from "@inertiajs/react";
 
 export default function Create({ kriteria }) {
     const { data, setData, post, processing, errors } = useForm({
@@ -21,6 +22,11 @@ export default function Create({ kriteria }) {
         };
 
         post(route("alternatif.store"), payload);
+    };
+
+    const handleBackButton = (e) => {
+        e.preventDefault();
+        router.visit(route("alternatif.index"));
     };
 
     return (
@@ -68,7 +74,7 @@ export default function Create({ kriteria }) {
                                             value={ktr.nama}
                                         />
 
-                                        <select
+                                        <SelectInput
                                             id={ktr.nama}
                                             name={`kriteria.${ktr.id}`}
                                             className="mt-1 block w-full"
@@ -90,16 +96,14 @@ export default function Create({ kriteria }) {
                                                     {sub.nama}
                                                 </option>
                                             ))}
-                                        </select>
+                                        </SelectInput>
                                     </div>
                                 ))}
                             </div>
 
                             <div className="flex items-center justify-end mt-10">
-                                <SecondaryButton>
-                                    <Link href={route("alternatif.index")}>
-                                        Batal
-                                    </Link>
+                                <SecondaryButton onClick={handleBackButton}>
+                                    Kembali
                                 </SecondaryButton>
 
                                 <PrimaryButton

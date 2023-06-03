@@ -1,14 +1,25 @@
 import Container, { Board } from "@/Components/Container";
+import DangerButton from "@/Components/DangerButton";
+import { IconPlus } from "@/Components/IconPlus";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
+import Modal from "@/Components/Modal";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Link, useForm } from "@inertiajs/react";
+import { router, useForm } from "@inertiajs/react";
+import { useState } from "react";
 
 export default function Edit({ kriteria }) {
-    const { data, setData, patch, processing, errors } = useForm({
+    const {
+        data,
+        setData,
+        patch,
+        delete: destroy,
+        processing,
+        errors,
+    } = useForm({
         nama: kriteria?.nama || "",
         bobot: kriteria?.bobot || "",
         sub_kriteria: kriteria?.sub_kriteria || [
@@ -18,6 +29,9 @@ export default function Edit({ kriteria }) {
             },
         ],
     });
+
+    const [confirmingKriteriaDeletion, setConfirmingKriteriaDeletion] =
+        useState(false);
 
     const submit = (e) => {
         e.preventDefault();
@@ -57,6 +71,25 @@ export default function Edit({ kriteria }) {
             ...prevState,
             sub_kriteria: prevState.sub_kriteria.filter((_, i) => i !== index),
         }));
+    };
+
+    const confirmKriteriaDeletion = (e) => {
+        e.preventDefault();
+        setConfirmingKriteriaDeletion(true);
+    };
+
+    const closeModal = () => {
+        setConfirmingKriteriaDeletion(false);
+    };
+
+    const deleteKriteria = (e) => {
+        e.preventDefault();
+        destroy(route("kriteria.destroy", kriteria));
+    };
+
+    const handleBackButton = (e) => {
+        e.preventDefault();
+        router.visit(route("kriteria.index"));
     };
 
     return (
@@ -188,50 +221,58 @@ export default function Edit({ kriteria }) {
                             <div className="mt-4">
                                 <button
                                     type="button"
-                                    className="text-white bg-indigo-500 hover:bg-indigo-700 px-3 py-2 rounded-md transition"
+                                    className="text-white bg-emerald-500 hover:bg-emerald-600 px-3 py-2 rounded-md transition"
                                     onClick={handleAddSub}
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="icon icon-tabler icon-tabler-plus"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="2"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        ></path>
-                                        <path d="M12 5l0 14"></path>
-                                        <path d="M5 12l14 0"></path>
-                                    </svg>
+                                    <IconPlus className="w-6 h-6" />
                                 </button>
                             </div>
 
-                            <div className="flex items-center justify-end mt-10">
-                                <SecondaryButton>
-                                    <Link href={route("kriteria.index")}>
-                                        Batal
-                                    </Link>
-                                </SecondaryButton>
-
-                                <PrimaryButton
-                                    className="ml-4"
-                                    disabled={processing}
+                            <div className="flex items-center justify-between mt-10">
+                                <DangerButton
+                                    onClick={(e) => confirmKriteriaDeletion(e)}
                                 >
-                                    Simpan
-                                </PrimaryButton>
+                                    Hapur
+                                </DangerButton>
+
+                                <div className="flex justify-end">
+                                    <SecondaryButton onClick={handleBackButton}>
+                                        Kembali
+                                    </SecondaryButton>
+
+                                    <PrimaryButton
+                                        className="ml-4"
+                                        disabled={processing}
+                                    >
+                                        Simpan
+                                    </PrimaryButton>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </Board>
             </Container>
+
+            <Modal show={confirmingKriteriaDeletion} onClose={closeModal}>
+                <form onSubmit={deleteKriteria} className="p-6">
+                    <h2 className="text-center text-lg font-medium text-gray-700">
+                        Yakin untuk menghapus Kriteria{" "}
+                        <span className="font-semibold text-gray-900">
+                            "{kriteria.nama}"
+                        </span>
+                    </h2>
+
+                    <div className="mt-10 flex justify-between">
+                        <SecondaryButton onClick={closeModal}>
+                            Batal
+                        </SecondaryButton>
+
+                        <DangerButton disabled={processing}>
+                            Hapus Kriteria
+                        </DangerButton>
+                    </div>
+                </form>
+            </Modal>
         </AdminLayout>
     );
 }

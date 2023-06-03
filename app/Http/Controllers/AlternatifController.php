@@ -4,10 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Alternatif;
 use App\Http\Requests\StoreAlternatifRequest;
-use App\Http\Requests\UpdateAlternatifRequest;
 use App\Models\Kriteria;
-use App\Models\SubKriteria;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -54,16 +51,6 @@ class AlternatifController extends Controller
         });
 
         return to_route('alternatif.index')->with('success', 'Alternatif berhasil ditambahkan.');
-    }
-
-    /**
-     * Display the specified resource.
-     */
-    public function show(Alternatif $alternatif): Response
-    {
-        return Inertia::render('Admin/Alternatif/Show', [
-            'alternatif' => $alternatif->load('kriteria')
-        ]);
     }
 
     /**

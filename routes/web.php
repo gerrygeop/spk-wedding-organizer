@@ -8,25 +8,11 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
-
 Route::get('/', function () {
-    return Inertia::render('Welcome', [
-        'canLogin' => Route::has('login'),
-        'canRegister' => Route::has('register'),
-        'laravelVersion' => Application::VERSION,
-        'phpVersion' => PHP_VERSION,
+    return Inertia::render('Auth/Login', [
+        'status' => session('status'),
     ]);
-});
+})->middleware('guest');
 
 Route::middleware('auth')->group(function () {
     // Profile
@@ -43,10 +29,11 @@ Route::middleware('auth')->group(function () {
             return Inertia::render('Admin/Dashboard');
         })->name('admin.dashboard');
 
-        Route::resource('alternatif', AlternatifController::class);
-        Route::resource('kriteria', KriteriaController::class)->parameters(['kriteria' => 'kriteria']);
+        Route::resource('alternatif', AlternatifController::class)->except('show');
+        Route::resource('kriteria', KriteriaController::class)->except('show')->parameters(['kriteria' => 'kriteria']);
     });
 
+    // TOPSIS
     Route::get('normalisasi-matrix', [TopsisController::class, 'stepOne'])->name('normalisasi-matrix');
     Route::get('normalisasi-matrix-terbobot', [TopsisController::class, 'stepTwo'])->name('normalisasi-matrix-terbobot');
     Route::get('solusi-ideal', [TopsisController::class, 'stepThree'])->name('solusi-ideal');

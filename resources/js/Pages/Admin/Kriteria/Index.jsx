@@ -1,4 +1,6 @@
 import Container, { Board, Section } from "@/Components/Container";
+import EditButton from "@/Components/EditButton";
+import { IconPlus } from "@/Components/IconPlus";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AdminLayout from "@/Layouts/AdminLayout";
@@ -15,7 +17,12 @@ export default function Index({ kriteria }) {
                 <Board>
                     <Section>
                         <div className="flex items-center justify-end mb-4">
-                            <PrimaryButton type="button" onClick={createNew}>
+                            <PrimaryButton
+                                type="button"
+                                onClick={createNew}
+                                className="pl-2.5"
+                            >
+                                <IconPlus className="w-5 h-5 mr-1.5" />
                                 Kriteria baru
                             </PrimaryButton>
                         </div>
@@ -32,20 +39,20 @@ export default function Index({ kriteria }) {
                                     kriteria.map((ktr) => (
                                         <tr key={ktr.id}>
                                             <Table.Td>
-                                                <span className="capitalize text-sm text-gray-800">
+                                                <span className="capitalize text-sm text-gray-900">
                                                     {ktr.nama}
                                                 </span>
                                             </Table.Td>
                                             <Table.Td>{ktr.bobot}</Table.Td>
-                                            <Table.Td>
-                                                <Link
+                                            <Table.Td className="text-end">
+                                                <EditButton
                                                     href={route(
-                                                        "kriteria.show",
+                                                        "kriteria.edit",
                                                         ktr
                                                     )}
                                                 >
-                                                    Detail
-                                                </Link>
+                                                    Edit
+                                                </EditButton>
                                             </Table.Td>
                                         </tr>
                                     ))

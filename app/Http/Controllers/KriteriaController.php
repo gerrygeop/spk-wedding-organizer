@@ -51,16 +51,6 @@ class KriteriaController extends Controller
     }
 
     /**
-     * Display the specified resource.
-     */
-    public function show(Kriteria $kriteria): Response
-    {
-        return Inertia::render('Admin/Kriteria/Show', [
-            'kriteria' => $kriteria
-        ]);
-    }
-
-    /**
      * Show the form for editing the specified resource.
      */
     public function edit(Kriteria $kriteria): Response

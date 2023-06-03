@@ -1,11 +1,12 @@
 import Container, { Board } from "@/Components/Container";
+import { IconPlus } from "@/Components/IconPlus";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Link, useForm } from "@inertiajs/react";
+import { router, useForm } from "@inertiajs/react";
 
 export default function Create() {
     const { data, setData, post, processing, errors } = useForm({
@@ -57,6 +58,11 @@ export default function Create() {
             ...prevState,
             sub_kriteria: prevState.sub_kriteria.filter((_, i) => i !== index),
         }));
+    };
+
+    const handleBackButton = (e) => {
+        e.preventDefault();
+        router.visit(route("kriteria.index"));
     };
 
     return (
@@ -187,37 +193,16 @@ export default function Create() {
                             <div className="mt-4">
                                 <button
                                     type="button"
-                                    className="text-white bg-indigo-500 hover:bg-indigo-700 px-3 py-2 rounded-md transition"
+                                    className="text-white bg-emerald-500 hover:bg-emerald-600 px-3 py-2 rounded-md transition"
                                     onClick={handleAddSub}
                                 >
-                                    <svg
-                                        xmlns="http://www.w3.org/2000/svg"
-                                        className="icon icon-tabler icon-tabler-plus"
-                                        width={24}
-                                        height={24}
-                                        viewBox="0 0 24 24"
-                                        strokeWidth="2"
-                                        stroke="currentColor"
-                                        fill="none"
-                                        strokeLinecap="round"
-                                        strokeLinejoin="round"
-                                    >
-                                        <path
-                                            stroke="none"
-                                            d="M0 0h24v24H0z"
-                                            fill="none"
-                                        ></path>
-                                        <path d="M12 5l0 14"></path>
-                                        <path d="M5 12l14 0"></path>
-                                    </svg>
+                                    <IconPlus className="w-6 h-6" />
                                 </button>
                             </div>
 
                             <div className="flex items-center justify-end mt-10">
-                                <SecondaryButton>
-                                    <Link href={route("kriteria.index")}>
-                                        Batal
-                                    </Link>
+                                <SecondaryButton onClick={handleBackButton}>
+                                    Kembali
                                 </SecondaryButton>
 
                                 <PrimaryButton

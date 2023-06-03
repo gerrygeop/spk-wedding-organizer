@@ -1,18 +1,30 @@
 import Container, { Board } from "@/Components/Container";
+import DangerButton from "@/Components/DangerButton";
 import InputError from "@/Components/InputError";
 import InputLabel from "@/Components/InputLabel";
+import Modal from "@/Components/Modal";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
+import SelectInput from "@/Components/SelectInput";
 import TextInput from "@/Components/TextInput";
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Link, useForm } from "@inertiajs/react";
-import { useEffect } from "react";
+import { router, useForm } from "@inertiajs/react";
+import { useEffect, useState } from "react";
 
 export default function Edit({ alternatif, kriteria }) {
-    const { data, setData, patch, processing, errors } = useForm({
+    const {
+        data,
+        setData,
+        patch,
+        delete: destroy,
+        processing,
+        errors,
+    } = useForm({
         nama: alternatif.nama || "",
         kriteria: {},
     });
+
+    const [confirmingUserDeletion, setConfirmingUserDeletion] = useState(false);
 
     useEffect(() => {
         const defaultKriteria = {};
@@ -30,6 +42,25 @@ export default function Edit({ alternatif, kriteria }) {
         };
 
         patch(route("alternatif.update", alternatif), payload);
+    };
+
+    const deleteAlternatif = (e) => {
+        e.preventDefault();
+        destroy(route("alternatif.destroy", alternatif));
+    };
+
+    const confirmUserDeletion = (e) => {
+        e.preventDefault();
+        setConfirmingUserDeletion(true);
+    };
+
+    const closeModal = () => {
+        setConfirmingUserDeletion(false);
+    };
+
+    const handleBackButton = (e) => {
+        e.preventDefault();
+        router.visit(route("alternatif.index"));
     };
 
     return (
@@ -77,7 +108,7 @@ export default function Edit({ alternatif, kriteria }) {
                                             value={ktr.nama}
                                         />
 
-                                        <select
+                                        <SelectInput
                                             id={ktr.nama}
                                             name={`kriteria.${ktr.id}`}
                                             className="mt-1 block w-full"
@@ -99,34 +130,56 @@ export default function Edit({ alternatif, kriteria }) {
                                                     {sub.nama}
                                                 </option>
                                             ))}
-                                        </select>
+                                        </SelectInput>
                                     </div>
                                 ))}
                             </div>
 
-                            <div className="flex items-center justify-end mt-10">
-                                <SecondaryButton>
-                                    <Link
-                                        href={route(
-                                            "alternatif.show",
-                                            alternatif
-                                        )}
-                                    >
-                                        Batal
-                                    </Link>
-                                </SecondaryButton>
-
-                                <PrimaryButton
-                                    className="ml-4"
-                                    disabled={processing}
+                            <div className="flex items-center justify-between mt-10">
+                                <DangerButton
+                                    onClick={(e) => confirmUserDeletion(e)}
                                 >
-                                    Simpan
-                                </PrimaryButton>
+                                    Hapus
+                                </DangerButton>
+
+                                <div className="flex justify-end">
+                                    <SecondaryButton onClick={handleBackButton}>
+                                        Kembali
+                                    </SecondaryButton>
+
+                                    <PrimaryButton
+                                        className="ml-4"
+                                        disabled={processing}
+                                    >
+                                        Simpan
+                                    </PrimaryButton>
+                                </div>
                             </div>
                         </form>
                     </div>
                 </Board>
             </Container>
+
+            <Modal show={confirmingUserDeletion} onClose={closeModal}>
+                <form onSubmit={deleteAlternatif} className="p-6">
+                    <h2 className="text-center text-lg font-medium text-gray-700">
+                        Yakin untuk menghapus Alternatif{" "}
+                        <span className="font-semibold text-gray-900">
+                            {alternatif.nama}
+                        </span>
+                    </h2>
+
+                    <div className="mt-10 flex justify-between">
+                        <SecondaryButton onClick={closeModal}>
+                            Batal
+                        </SecondaryButton>
+
+                        <DangerButton disabled={processing}>
+                            Hapus Alternatif
+                        </DangerButton>
+                    </div>
+                </form>
+            </Modal>
         </AdminLayout>
     );
 }

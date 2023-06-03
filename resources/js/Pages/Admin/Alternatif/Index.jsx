@@ -1,11 +1,13 @@
 import Container, { Board, Section } from "@/Components/Container";
+import EditButton from "@/Components/EditButton";
+import { IconPlus } from "@/Components/IconPlus";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AdminLayout from "@/Layouts/AdminLayout";
 import { Link, router } from "@inertiajs/react";
 
 export default function Index({ alternatif, kriteria }) {
-    const createNew = () => {
+    const handleCreateButton = () => {
         router.visit(route("alternatif.create"));
     };
 
@@ -15,7 +17,12 @@ export default function Index({ alternatif, kriteria }) {
                 <Board>
                     <Section>
                         <div className="flex items-center justify-end mb-4">
-                            <PrimaryButton type="button" onClick={createNew}>
+                            <PrimaryButton
+                                type="button"
+                                onClick={handleCreateButton}
+                                className="pl-2.5"
+                            >
+                                <IconPlus className="w-5 h-5 mr-1.5" />
                                 Alternatif baru
                             </PrimaryButton>
                         </div>
@@ -37,25 +44,45 @@ export default function Index({ alternatif, kriteria }) {
                                     alternatif.map((alt) => (
                                         <tr key={alt.id}>
                                             <Table.Td>
-                                                <span className="capitalize text-sm text-gray-800">
+                                                <span className="capitalize text-sm text-gray-900">
                                                     {alt.nama}
                                                 </span>
                                             </Table.Td>
 
                                             {alt.kriteria.map((ktr, i) => (
-                                                <Table.Td key={ktr.id}>
-                                                    {ktr.pivot.nilai}
+                                                <Table.Td
+                                                    key={ktr.id}
+                                                    className="text-sm"
+                                                >
+                                                    {ktr.sub_kriteria
+                                                        .filter(
+                                                            (sub) =>
+                                                                sub.bobot ===
+                                                                ktr.pivot.nilai
+                                                        )
+                                                        .map((filteredSub) => (
+                                                            <span
+                                                                key={
+                                                                    filteredSub.id
+                                                                }
+                                                            >
+                                                                {
+                                                                    filteredSub.nama
+                                                                }
+                                                            </span>
+                                                        ))}
                                                 </Table.Td>
                                             ))}
-                                            <Table.Td>
-                                                <Link
+
+                                            <Table.Td className="text-end">
+                                                <EditButton
                                                     href={route(
-                                                        "alternatif.show",
+                                                        "alternatif.edit",
                                                         alt
                                                     )}
                                                 >
-                                                    Detail
-                                                </Link>
+                                                    Edit
+                                                </EditButton>
                                             </Table.Td>
                                         </tr>
                                     ))
