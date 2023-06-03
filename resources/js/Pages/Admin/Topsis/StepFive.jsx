@@ -1,10 +1,10 @@
 import Container, { Board, Section } from "@/Components/Container";
 import Table from "@/Components/Table";
-import AdminLayout from "@/Layouts/AdminLayout";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function StepFive({ data }) {
     return (
-        <AdminLayout>
+        <AuthenticatedLayout>
             <Container>
                 <Board>
                     <Section>
@@ -41,6 +41,6 @@ export default function StepFive({ data }) {
                     </Section>
                 </Board>
             </Container>
-        </AdminLayout>
+        </AuthenticatedLayout>
     );
 }

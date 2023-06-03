@@ -6,6 +6,7 @@ import { usePage } from "@inertiajs/react";
 
 export default function Navbar() {
     const user = usePage().props.auth.user;
+
     const [showingNavigationDropdown, setShowingNavigationDropdown] =
         useState(false);
 
@@ -14,52 +15,18 @@ export default function Navbar() {
             <div className="lg:hidden p-2 pt-4 border">
                 <div className="flex items-center justify-start space-x-2">
                     <img
-                        src="https://img.logoipsum.com/289.svg"
+                        src="https://img.logoipsum.com/244.svg"
                         alt="Logo"
                         className="w-24"
                     />
                 </div>
             </div>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-[90rem] mx-auto px-4 sm:px-6 lg:px-8">
                 <div className="flex justify-between h-16">
                     <div className="flex">
-                        <div className="shrink-0 flex items-center">
-                            <h1>SPK</h1>
-                        </div>
-
-                        <div className="hidden">
-                            {user.role === "admin" ? (
-                                <>
-                                    <NavLink
-                                        href={route("admin.dashboard")}
-                                        active={route().current(
-                                            "admin.dashboard"
-                                        )}
-                                    >
-                                        Dashboard
-                                    </NavLink>
-                                    <NavLink
-                                        href={route("alternatif.index")}
-                                        active={route().current("alternatif.*")}
-                                    >
-                                        Alternatif
-                                    </NavLink>
-                                    <NavLink
-                                        href={route("kriteria.index")}
-                                        active={route().current("kriteria.*")}
-                                    >
-                                        Kriteria
-                                    </NavLink>
-                                </>
-                            ) : (
-                                <NavLink
-                                    href={route("dashboard")}
-                                    active={route().current("dashboard")}
-                                >
-                                    Dashboard
-                                </NavLink>
-                            )}
+                        <div className="hidden shrink-0 md:flex md:items-center">
+                            <h1>Sistem Pendukung Keputusan Metode TOPSIS</h1>
                         </div>
                     </div>
 

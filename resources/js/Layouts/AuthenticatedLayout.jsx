@@ -1,19 +1,15 @@
 import Navbar from "./Navbar";
+import Sidebar from "./Sidebar";
 
-export default function Authenticated({ user = "", header, children }) {
+export default function Authenticated({ children }) {
     return (
-        <div className="min-h-screen bg-gray-100">
-            <Navbar />
+        <div className="min-h-screen bg-gray-100 flex flex-col lg:flex-row">
+            <Sidebar />
 
-            {header && (
-                <header className="bg-white shadow">
-                    <div className="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8">
-                        {header}
-                    </div>
-                </header>
-            )}
-
-            <main>{children}</main>
+            <main className="flex-1 ml-0 lg:ml-64">
+                <Navbar />
+                {children}
+            </main>
         </div>
     );
 }

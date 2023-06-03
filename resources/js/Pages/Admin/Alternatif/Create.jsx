@@ -5,7 +5,7 @@ import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import SelectInput from "@/Components/SelectInput";
 import TextInput from "@/Components/TextInput";
-import AdminLayout from "@/Layouts/AdminLayout";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { router, useForm } from "@inertiajs/react";
 
 export default function Create({ kriteria }) {
@@ -30,7 +30,7 @@ export default function Create({ kriteria }) {
     };
 
     return (
-        <AdminLayout>
+        <AuthenticatedLayout>
             <Container>
                 <Board>
                     <div className="max-w-2xl p-6 md:p-8">
@@ -117,6 +117,6 @@ export default function Create({ kriteria }) {
                     </div>
                 </Board>
             </Container>
-        </AdminLayout>
+        </AuthenticatedLayout>
     );
 }

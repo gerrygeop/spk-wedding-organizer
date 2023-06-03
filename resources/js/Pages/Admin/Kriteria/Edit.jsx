@@ -7,7 +7,7 @@ import Modal from "@/Components/Modal";
 import PrimaryButton from "@/Components/PrimaryButton";
 import SecondaryButton from "@/Components/SecondaryButton";
 import TextInput from "@/Components/TextInput";
-import AdminLayout from "@/Layouts/AdminLayout";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { router, useForm } from "@inertiajs/react";
 import { useState } from "react";
 
@@ -93,7 +93,7 @@ export default function Edit({ kriteria }) {
     };
 
     return (
-        <AdminLayout>
+        <AuthenticatedLayout>
             <Container>
                 <Board>
                     <div className="max-w-2xl p-6 md:p-8">
@@ -273,6 +273,6 @@ export default function Edit({ kriteria }) {
                     </div>
                 </form>
             </Modal>
-        </AdminLayout>
+        </AuthenticatedLayout>
     );
 }

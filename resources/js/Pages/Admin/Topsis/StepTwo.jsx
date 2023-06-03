@@ -1,10 +1,10 @@
 import Container, { Board, Section } from "@/Components/Container";
 import Table from "@/Components/Table";
-import AdminLayout from "@/Layouts/AdminLayout";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 
 export default function StepTwo({ kriteria, matriks }) {
     return (
-        <AdminLayout>
+        <AuthenticatedLayout>
             <Container>
                 <Board>
                     <Section>
@@ -51,6 +51,6 @@ export default function StepTwo({ kriteria, matriks }) {
                     </Section>
                 </Board>
             </Container>
-        </AdminLayout>
+        </AuthenticatedLayout>
     );
 }

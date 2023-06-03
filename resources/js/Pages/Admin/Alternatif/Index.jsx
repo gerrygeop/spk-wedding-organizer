@@ -3,7 +3,7 @@ import EditButton from "@/Components/EditButton";
 import { IconPlus } from "@/Components/IconPlus";
 import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
-import AdminLayout from "@/Layouts/AdminLayout";
+import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { Link, router } from "@inertiajs/react";
 
 export default function Index({ alternatif, kriteria }) {
@@ -12,7 +12,7 @@ export default function Index({ alternatif, kriteria }) {
     };
 
     return (
-        <AdminLayout>
+        <AuthenticatedLayout>
             <Container>
                 <Board>
                     <Section>
@@ -100,6 +100,6 @@ export default function Index({ alternatif, kriteria }) {
                     </Section>
                 </Board>
             </Container>
-        </AdminLayout>
+        </AuthenticatedLayout>
     );
 }
