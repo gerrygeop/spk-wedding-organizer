@@ -21,7 +21,7 @@ export default function Ranking({ data }) {
                                     data.map((value, index) => (
                                         <tr key={index}>
                                             <Table.Td>
-                                                <span className="capitalize text-sm text-gray-800">
+                                                <span className="capitalize text-sm text-gray-900">
                                                     {value.alternatif}
                                                 </span>
                                             </Table.Td>

@@ -25,7 +25,7 @@ export default function StepThree({ kriteria, minmax }) {
                                     minmax.map((value, key) => (
                                         <tr key={key}>
                                             <Table.Td>
-                                                <span className="capitalize font-semibold text-gray-800">
+                                                <span className="capitalize font-semibold text-gray-900">
                                                     {value.type}
                                                 </span>
                                             </Table.Td>

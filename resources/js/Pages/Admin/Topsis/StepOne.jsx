@@ -25,7 +25,7 @@ export default function StepOne({ kriteria, matriks }) {
                                     matriks.map((value, key) => (
                                         <tr key={key}>
                                             <Table.Td>
-                                                <span className="capitalize text-sm text-gray-800">
+                                                <span className="capitalize text-sm text-gray-900">
                                                     {value.alternatif}
                                                 </span>
                                             </Table.Td>
