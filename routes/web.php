@@ -4,6 +4,7 @@ use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopsisController;
+use App\Http\Controllers\UserController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -28,6 +29,8 @@ Route::middleware('auth')->group(function () {
         Route::get('/admin/dashboard', function () {
             return Inertia::render('Admin/Dashboard');
         })->name('admin.dashboard');
+
+        Route::resource('users', UserController::class)->except('create', 'store', 'destroy');
 
         Route::resource('alternatif', AlternatifController::class)->except('show');
         Route::resource('kriteria', KriteriaController::class)->except('show')->parameters(['kriteria' => 'kriteria']);

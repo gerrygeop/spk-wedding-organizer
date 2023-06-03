@@ -26,6 +26,13 @@ export default function Sidebar() {
                             </SideLink>
 
                             <SideLink
+                                href={route("users.index")}
+                                active={route().current("users.*")}
+                            >
+                                <span className="tracking-wide">Users</span>
+                            </SideLink>
+
+                            <SideLink
                                 href={route("kriteria.index")}
                                 active={route().current("kriteria.*")}
                             >

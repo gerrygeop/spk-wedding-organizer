@@ -11,7 +11,7 @@ export default function UpdateProfileInformation({ className = "" }) {
     const { data, setData, patch, errors, processing, recentlySuccessful } =
         useForm({
             name: user.name,
-            email: user.email,
+            username: user.username,
         });
 
     const submit = (e) => {
@@ -28,7 +28,7 @@ export default function UpdateProfileInformation({ className = "" }) {
                 </h2>
 
                 <p className="mt-1 text-sm text-gray-600">
-                    Update your account's profile information and email address.
+                    Update your account's profile information.
                 </p>
             </header>
 
@@ -50,19 +50,19 @@ export default function UpdateProfileInformation({ className = "" }) {
                 </div>
 
                 <div>
-                    <InputLabel htmlFor="email" value="Email" />
+                    <InputLabel htmlFor="username" value="Username" />
 
                     <TextInput
-                        id="email"
-                        type="email"
+                        id="username"
+                        type="text"
                         className="mt-1 block w-full"
-                        value={data.email}
-                        onChange={(e) => setData("email", e.target.value)}
+                        value={data.username}
+                        onChange={(e) => setData("username", e.target.value)}
                         required
                         autoComplete="username"
                     />
 
-                    <InputError className="mt-2" message={errors.email} />
+                    <InputError className="mt-2" message={errors.username} />
                 </div>
 
                 <div className="flex items-center gap-4">
