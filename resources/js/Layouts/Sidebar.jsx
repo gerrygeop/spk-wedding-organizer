@@ -64,11 +64,19 @@ export default function Sidebar() {
                     </div>
 
                     <SideLink
+                        href={route("matrix")}
+                        active={route().current("matrix")}
+                    >
+                        <span className="tracking-wide">Matriks Penilaian</span>
+                    </SideLink>
+
+                    <SideLink
                         href={route("normalisasi-matrix")}
                         active={route().current("normalisasi-matrix")}
                     >
                         <span className="tracking-wide">Normalisasi</span>
                     </SideLink>
+
                     <SideLink
                         href={route("normalisasi-matrix-terbobot")}
                         active={route().current("normalisasi-matrix-terbobot")}

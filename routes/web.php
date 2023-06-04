@@ -37,6 +37,7 @@ Route::middleware('auth')->group(function () {
     });
 
     // TOPSIS
+    Route::get('matrix', [TopsisController::class, 'matrix'])->name('matrix');
     Route::get('normalisasi-matrix', [TopsisController::class, 'stepOne'])->name('normalisasi-matrix');
     Route::get('normalisasi-matrix-terbobot', [TopsisController::class, 'stepTwo'])->name('normalisasi-matrix-terbobot');
     Route::get('solusi-ideal', [TopsisController::class, 'stepThree'])->name('solusi-ideal');

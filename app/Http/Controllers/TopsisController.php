@@ -9,6 +9,14 @@ use Inertia\Response;
 
 class TopsisController extends Controller
 {
+    public function matrix(): Response
+    {
+        return Inertia::render('Admin/Topsis/Matrix', [
+            'alternatif' => Alternatif::with('kriteria')->get(),
+            'kriteria' => Kriteria::all(),
+        ]);
+    }
+
     public function stepOne(): Response
     {
         $data = $this->normalisasiMatrix();

@@ -159,11 +159,19 @@ export default function Navbar() {
                     </div>
 
                     <ResponsiveNavLink
+                        href={route("matrix")}
+                        active={route().current("matrix")}
+                    >
+                        <span className="tracking-wide">Matriks Penilaian</span>
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
                         href={route("normalisasi-matrix")}
                         active={route().current("normalisasi-matrix")}
                     >
                         <span className="tracking-wide">Normalisasi</span>
                     </ResponsiveNavLink>
+
                     <ResponsiveNavLink
                         href={route("normalisasi-matrix-terbobot")}
                         active={route().current("normalisasi-matrix-terbobot")}
