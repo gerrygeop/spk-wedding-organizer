@@ -1,7 +1,4 @@
 import Container, { Board, Section } from "@/Components/Container";
-import EditButton from "@/Components/EditButton";
-import { IconPlus } from "@/Components/IconPlus";
-import PrimaryButton from "@/Components/PrimaryButton";
 import Table from "@/Components/Table";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { router } from "@inertiajs/react";
@@ -20,14 +17,6 @@ export default function Matrix({ alternatif, kriteria }) {
                             <h3 className="font-semibold text-2xl text-gray-700">
                                 Matriks Keputusan
                             </h3>
-                            <PrimaryButton
-                                type="button"
-                                onClick={handleCreateButton}
-                                className="pl-2.5"
-                            >
-                                <IconPlus className="w-5 h-5 mr-1.5" />
-                                Alternatif baru
-                            </PrimaryButton>
                         </div>
                         <Table>
                             <Table.Thead>
@@ -39,7 +28,6 @@ export default function Matrix({ alternatif, kriteria }) {
                                             {ktr.nama}
                                         </Table.Th>
                                     ))}
-                                    <Table.Th scope="col"></Table.Th>
                                 </tr>
                             </Table.Thead>
                             <Table.Tbody>
@@ -60,17 +48,6 @@ export default function Matrix({ alternatif, kriteria }) {
                                                     {ktr.pivot.nilai}
                                                 </Table.Td>
                                             ))}
-
-                                            <Table.Td className="text-end">
-                                                <EditButton
-                                                    href={route(
-                                                        "alternatif.edit",
-                                                        alt
-                                                    )}
-                                                >
-                                                    Edit
-                                                </EditButton>
-                                            </Table.Td>
                                         </tr>
                                     ))
                                 ) : (
