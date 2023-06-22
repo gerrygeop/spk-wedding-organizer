@@ -9,6 +9,11 @@ use Inertia\Response;
 
 class TopsisController extends Controller
 {
+    private function isAlternatifExists()
+    {
+        return Alternatif::exists();
+    }
+
     public function matrix(): Response
     {
         return Inertia::render('Admin/Topsis/Matrix', [
@@ -19,7 +24,12 @@ class TopsisController extends Controller
 
     public function stepOne(): Response
     {
-        $data = $this->normalisasiMatrix();
+        if ($this->isAlternatifExists()) {
+            $data = $this->normalisasiMatrix();
+        } else {
+            $data = collect([]);
+        }
+
         return Inertia::render('Admin/Topsis/StepOne', [
             'kriteria' => Kriteria::all(),
             'matriks' => $data,
@@ -28,7 +38,12 @@ class TopsisController extends Controller
 
     public function stepTwo()
     {
-        $data = $this->normalisasiMatrixTerbobot();
+        if ($this->isAlternatifExists()) {
+            $data = $this->normalisasiMatrixTerbobot();
+        } else {
+            $data = collect([]);
+        }
+
         return Inertia::render('Admin/Topsis/StepTwo', [
             'kriteria' => Kriteria::all(),
             'matriks' => $data,
@@ -37,7 +52,12 @@ class TopsisController extends Controller
 
     public function stepThree()
     {
-        $data = $this->solusiIdeal();
+        if ($this->isAlternatifExists()) {
+            $data = $this->solusiIdeal();
+        } else {
+            $data = collect([]);
+        }
+
         return Inertia::render('Admin/Topsis/StepThree', [
             'kriteria' => Kriteria::all(),
             'minmax' => $data,
@@ -46,7 +66,12 @@ class TopsisController extends Controller
 
     public function stepFour()
     {
-        $data = $this->jarakIdeal();
+        if ($this->isAlternatifExists()) {
+            $data = $this->jarakIdeal();
+        } else {
+            $data = collect([]);
+        }
+
         return Inertia::render('Admin/Topsis/StepFour', [
             'data' => $data,
         ]);
@@ -54,7 +79,12 @@ class TopsisController extends Controller
 
     public function stepFive()
     {
-        $data = $this->preferensi();
+        if ($this->isAlternatifExists()) {
+            $data = $this->preferensi();
+        } else {
+            $data = collect([]);
+        }
+
         return Inertia::render('Admin/Topsis/StepFive', [
             'data' => $data,
         ]);
@@ -62,7 +92,11 @@ class TopsisController extends Controller
 
     public function ranking()
     {
-        $data = $this->preferensi()->sortByDesc('hasil');
+        if ($this->isAlternatifExists()) {
+            $data = $this->preferensi()->sortByDesc('hasil');
+        } else {
+            $data = collect([]);
+        }
 
         return Inertia::render('Admin/Topsis/Ranking', [
             'data' => $data->values(),
