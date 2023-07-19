@@ -6,7 +6,7 @@ import Table from "@/Components/Table";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
 import { router } from "@inertiajs/react";
 
-export default function Index({ alternatif, kriteria }) {
+export default function Index({ auth, alternatif, kriteria }) {
     const handleCreateButton = () => {
         router.visit(route("alternatif.create"));
     };
@@ -16,18 +16,21 @@ export default function Index({ alternatif, kriteria }) {
             <Container>
                 <Board>
                     <Section>
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-2">
                             <h3 className="font-semibold text-2xl text-gray-700">
                                 Daftar Alternatif
                             </h3>
-                            <PrimaryButton
-                                type="button"
-                                onClick={handleCreateButton}
-                                className="pl-2.5"
-                            >
-                                <IconPlus className="w-5 h-5 mr-1.5" />
-                                Alternatif baru
-                            </PrimaryButton>
+
+                            {auth.user.role === "admin" && (
+                                <PrimaryButton
+                                    type="button"
+                                    onClick={handleCreateButton}
+                                    className="pl-2.5"
+                                >
+                                    <IconPlus className="w-5 h-5 mr-1.5" />
+                                    Alternatif baru
+                                </PrimaryButton>
+                            )}
                         </div>
                         <Table>
                             <Table.Thead>
@@ -78,14 +81,16 @@ export default function Index({ alternatif, kriteria }) {
                                             ))}
 
                                             <Table.Td className="text-end">
-                                                <EditButton
-                                                    href={route(
-                                                        "alternatif.edit",
-                                                        alt
-                                                    )}
-                                                >
-                                                    Edit
-                                                </EditButton>
+                                                {auth.user.role === "admin" && (
+                                                    <EditButton
+                                                        href={route(
+                                                            "alternatif.edit",
+                                                            alt
+                                                        )}
+                                                    >
+                                                        Edit
+                                                    </EditButton>
+                                                )}
                                             </Table.Td>
                                         </tr>
                                     ))

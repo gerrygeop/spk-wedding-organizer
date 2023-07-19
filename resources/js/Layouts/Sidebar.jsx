@@ -49,12 +49,22 @@ export default function Sidebar() {
                             </SideLink>
                         </>
                     ) : (
-                        <SideLink
-                            href={route("dashboard")}
-                            active={route().current("dashboard")}
-                        >
-                            <span className="tracking-wide">Dashboard</span>
-                        </SideLink>
+                        <>
+                            <SideLink
+                                href={route("dashboard")}
+                                active={route().current("dashboard")}
+                            >
+                                <span className="tracking-wide">Dashboard</span>
+                            </SideLink>
+                            <SideLink
+                                href={route("alternatif.index")}
+                                active={route().current("alternatif.*")}
+                            >
+                                <span className="tracking-wide">
+                                    Alternatif
+                                </span>
+                            </SideLink>
+                        </>
                     )}
 
                     <div className="mt-8">

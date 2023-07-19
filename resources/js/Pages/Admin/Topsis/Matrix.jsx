@@ -1,19 +1,14 @@
 import Container, { Board, Section } from "@/Components/Container";
 import Table from "@/Components/Table";
 import AuthenticatedLayout from "@/Layouts/AuthenticatedLayout";
-import { router } from "@inertiajs/react";
 
 export default function Matrix({ alternatif, kriteria }) {
-    const handleCreateButton = () => {
-        router.visit(route("alternatif.create"));
-    };
-
     return (
         <AuthenticatedLayout>
             <Container>
                 <Board>
                     <Section>
-                        <div className="flex items-center justify-between mb-4">
+                        <div className="flex items-center justify-between mb-2">
                             <h3 className="font-semibold text-2xl text-gray-700">
                                 Matriks Keputusan
                             </h3>

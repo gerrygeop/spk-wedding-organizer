@@ -32,9 +32,10 @@ Route::middleware('auth')->group(function () {
 
         Route::resource('users', UserController::class)->except('create', 'store', 'destroy');
 
-        Route::resource('alternatif', AlternatifController::class)->except('show');
         Route::resource('kriteria', KriteriaController::class)->except('show')->parameters(['kriteria' => 'kriteria']);
     });
+
+    Route::resource('alternatif', AlternatifController::class)->except('show');
 
     // TOPSIS
     Route::get('matrix', [TopsisController::class, 'matrix'])->name('matrix');
