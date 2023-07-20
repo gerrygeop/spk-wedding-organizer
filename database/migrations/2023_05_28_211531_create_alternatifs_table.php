@@ -21,6 +21,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('alternatif_id')->constrained('alternatif')->cascadeOnDelete();
             $table->foreignId('kriteria_id')->constrained('kriteria')->cascadeOnDelete();
+            $table->foreignId('sub_kriteria_id')->constrained('sub_kriteria')->cascadeOnDelete();
             $table->integer('nilai');
         });
     }

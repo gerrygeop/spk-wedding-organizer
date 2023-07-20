@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Alternatif;
 use App\Http\Requests\StoreAlternatifRequest;
 use App\Models\Kriteria;
+use App\Models\SubKriteria;
 use Illuminate\Support\Facades\DB;
 use Inertia\Inertia;
 use Inertia\Response;
@@ -50,9 +51,14 @@ class AlternatifController extends Controller
                 'nama' => $validated['nama'],
             ]);
 
-            foreach ($validated['kriteria'] as $kriteriaId => $bobot) {
-                $alternatif->kriteria()->attach($kriteriaId, ['nilai' => $bobot]);
-            }
+            collect($validated['kriteria'])->each(function ($subKriteriaId, $kriteriaId) use ($alternatif) {
+                $nilai = SubKriteria::findOrFail($subKriteriaId);
+
+                $alternatif->kriteria()->attach($kriteriaId, [
+                    'sub_kriteria_id' => $subKriteriaId,
+                    'nilai' => $nilai->bobot,
+                ]);
+            });
         });
 
         return to_route('alternatif.index')->with('success', 'Alternatif berhasil ditambahkan.');
@@ -75,6 +81,7 @@ class AlternatifController extends Controller
     public function update(StoreAlternatifRequest $request, Alternatif $alternatif)
     {
         $validated = $request->validated();
+
         DB::transaction(function () use ($validated, $alternatif) {
             $alternatif->update([
                 'nama' => $validated['nama'],
@@ -82,12 +89,17 @@ class AlternatifController extends Controller
 
             $alternatif->kriteria()->detach();
 
-            foreach ($validated['kriteria'] as $kriteriaId => $bobot) {
-                $alternatif->kriteria()->attach($kriteriaId, ['nilai' => $bobot]);
-            }
+            collect($validated['kriteria'])->each(function ($subKriteriaId, $kriteriaId) use ($alternatif) {
+                $subKriteria = SubKriteria::findOrFail($subKriteriaId);
+
+                $alternatif->kriteria()->attach($kriteriaId, [
+                    'sub_kriteria_id' => $subKriteriaId,
+                    'nilai' => $subKriteria->bobot,
+                ]);
+            });
         });
 
-        return to_route('alternatif.show', $alternatif)->with('success', 'Alternatif berhasil diperbarui.');
+        return to_route('alternatif.index')->with('success', 'Alternatif berhasil diperbarui.');
     }
 
     /**

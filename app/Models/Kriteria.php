@@ -23,6 +23,6 @@ class Kriteria extends Model
 
     public function alternatif(): BelongsToMany
     {
-        return $this->belongsToMany(Alternatif::class, 'alternatif_kriteria')->withPivot('nilai');
+        return $this->belongsToMany(Alternatif::class, 'alternatif_kriteria')->withPivot('sub_kriteria_id', 'nilai');
     }
 }
