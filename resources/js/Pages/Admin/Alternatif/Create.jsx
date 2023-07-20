@@ -91,7 +91,7 @@ export default function Create({ kriteria }) {
                                             {ktr.sub_kriteria.map((sub) => (
                                                 <option
                                                     key={sub.id}
-                                                    value={sub.bobot}
+                                                    value={sub.id}
                                                 >
                                                     {sub.nama}
                                                 </option>

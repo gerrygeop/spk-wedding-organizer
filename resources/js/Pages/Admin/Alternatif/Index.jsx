@@ -55,7 +55,7 @@ export default function Index({ auth, alternatif, kriteria }) {
                                                 </span>
                                             </Table.Td>
 
-                                            {alt.kriteria.map((ktr, i) => (
+                                            {alt.kriteria.map((ktr) => (
                                                 <Table.Td
                                                     key={ktr.id}
                                                     className="text-sm"
@@ -63,8 +63,9 @@ export default function Index({ auth, alternatif, kriteria }) {
                                                     {ktr.sub_kriteria
                                                         .filter(
                                                             (sub) =>
-                                                                sub.bobot ===
-                                                                ktr.pivot.nilai
+                                                                sub.id ==
+                                                                ktr.pivot
+                                                                    .sub_kriteria_id
                                                         )
                                                         .map((filteredSub) => (
                                                             <span

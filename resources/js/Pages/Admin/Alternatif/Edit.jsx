@@ -29,7 +29,7 @@ export default function Edit({ alternatif, kriteria }) {
     useEffect(() => {
         const defaultKriteria = {};
         for (const ktr of alternatif.kriteria) {
-            defaultKriteria[ktr.id] = ktr.pivot.nilai;
+            defaultKriteria[ktr.id] = ktr.pivot.sub_kriteria_id;
         }
         setData({ ...data, kriteria: defaultKriteria });
     }, []);
@@ -125,7 +125,7 @@ export default function Edit({ alternatif, kriteria }) {
                                             {ktr.sub_kriteria.map((sub) => (
                                                 <option
                                                     key={sub.id}
-                                                    value={sub.bobot}
+                                                    value={sub.id}
                                                 >
                                                     {sub.nama}
                                                 </option>
