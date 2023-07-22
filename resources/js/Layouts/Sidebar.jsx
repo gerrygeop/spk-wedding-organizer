@@ -79,57 +79,6 @@ export default function Sidebar() {
                     >
                         <span className="tracking-wide">Perhitungan</span>
                     </SideLink>
-
-                    {/* <SideLink
-                        href={route("matrix")}
-                        active={route().current("matrix")}
-                    >
-                        <span className="tracking-wide">Matriks Penilaian</span>
-                    </SideLink>
-
-                    <SideLink
-                        href={route("normalisasi-matrix")}
-                        active={route().current("normalisasi-matrix")}
-                    >
-                        <span className="tracking-wide">Normalisasi</span>
-                    </SideLink>
-
-                    <SideLink
-                        href={route("normalisasi-matrix-terbobot")}
-                        active={route().current("normalisasi-matrix-terbobot")}
-                    >
-                        <span className="tracking-wide">
-                            Normalisasi Terbobot
-                        </span>
-                    </SideLink>
-
-                    <SideLink
-                        href={route("solusi-ideal")}
-                        active={route().current("solusi-ideal")}
-                    >
-                        <span className="tracking-wide">Solusi Ideal</span>
-                    </SideLink>
-
-                    <SideLink
-                        href={route("jarak-ideal")}
-                        active={route().current("jarak-ideal")}
-                    >
-                        <span className="tracking-wide">Jarak Ideal</span>
-                    </SideLink>
-
-                    <SideLink
-                        href={route("preferensi")}
-                        active={route().current("preferensi")}
-                    >
-                        <span className="tracking-wide">Preferensi</span>
-                    </SideLink>
-
-                    <SideLink
-                        href={route("ranking")}
-                        active={route().current("ranking")}
-                    >
-                        <span className="tracking-wide">Ranking</span>
-                    </SideLink> */}
                 </nav>
             </div>
         </div>

@@ -164,57 +164,6 @@ export default function Navbar() {
                     >
                         <span className="tracking-wide">Perhitungan</span>
                     </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("matrix")}
-                        active={route().current("matrix")}
-                    >
-                        <span className="tracking-wide">Matriks Penilaian</span>
-                    </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("normalisasi-matrix")}
-                        active={route().current("normalisasi-matrix")}
-                    >
-                        <span className="tracking-wide">Normalisasi</span>
-                    </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("normalisasi-matrix-terbobot")}
-                        active={route().current("normalisasi-matrix-terbobot")}
-                    >
-                        <span className="tracking-wide">
-                            Normalisasi Terbobot
-                        </span>
-                    </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("solusi-ideal")}
-                        active={route().current("solusi-ideal")}
-                    >
-                        <span className="tracking-wide">Solusi Ideal</span>
-                    </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("jarak-ideal")}
-                        active={route().current("jarak-ideal")}
-                    >
-                        <span className="tracking-wide">Jarak Ideal</span>
-                    </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("preferensi")}
-                        active={route().current("preferensi")}
-                    >
-                        <span className="tracking-wide">Preferensi</span>
-                    </ResponsiveNavLink>
-
-                    <ResponsiveNavLink
-                        href={route("ranking")}
-                        active={route().current("ranking")}
-                    >
-                        <span className="tracking-wide">Ranking</span>
-                    </ResponsiveNavLink>
                 </div>
 
                 <div className="pt-4 pb-1 border-t border-gray-200">

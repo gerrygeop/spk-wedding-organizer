@@ -40,13 +40,6 @@ Route::middleware('auth')->group(function () {
 
     // TOPSIS
     Route::get('topsis', [PerhitunganController::class, 'topsis'])->name('topsis');
-    Route::get('matrix', [TopsisController::class, 'matrix'])->name('matrix');
-    Route::get('normalisasi-matrix', [TopsisController::class, 'stepOne'])->name('normalisasi-matrix');
-    Route::get('normalisasi-matrix-terbobot', [TopsisController::class, 'stepTwo'])->name('normalisasi-matrix-terbobot');
-    Route::get('solusi-ideal', [TopsisController::class, 'stepThree'])->name('solusi-ideal');
-    Route::get('jarak-ideal', [TopsisController::class, 'stepFour'])->name('jarak-ideal');
-    Route::get('preferensi', [TopsisController::class, 'stepFive'])->name('preferensi');
-    Route::get('ranking', [TopsisController::class, 'ranking'])->name('ranking');
 });
 
 require __DIR__ . '/auth.php';
