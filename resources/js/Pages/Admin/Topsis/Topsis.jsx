@@ -20,8 +20,6 @@ export default function Topsis({ alternatif, kriteria, topsis }) {
         return acc;
     }, {});
 
-    console.log(initialFilteredData);
-
     const handleChange = (e) => {
         const { name, value } = e.target;
         setFilteredData((prevData) => ({
@@ -31,7 +29,7 @@ export default function Topsis({ alternatif, kriteria, topsis }) {
     };
 
     const handleOnSearch = () => {
-        router.post(route("topsis"), filteredData, {
+        router.get(route("topsis"), filteredData, {
             replace: true,
             preserveScroll: true,
         });
@@ -176,9 +174,9 @@ export default function Topsis({ alternatif, kriteria, topsis }) {
                                         <tr>
                                             <Table.Td colSpan="6">
                                                 <p className="text-gray-500 text-center italic">
-                                                    {alternatif.length < 2
-                                                        ? "Hanya terdapat 1 data"
-                                                        : "Tidak ada alternatif"}
+                                                    {alternatif.length != 1
+                                                        ? "Tidak ada alternatif"
+                                                        : "Hanya terdapat 1 data"}
                                                 </p>
                                             </Table.Td>
                                         </tr>
