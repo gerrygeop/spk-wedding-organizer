@@ -159,6 +159,13 @@ export default function Navbar() {
                     </div>
 
                     <ResponsiveNavLink
+                        href={route("topsis")}
+                        active={route().current("topsis")}
+                    >
+                        <span className="tracking-wide">Perhitungan</span>
+                    </ResponsiveNavLink>
+
+                    <ResponsiveNavLink
                         href={route("matrix")}
                         active={route().current("matrix")}
                     >

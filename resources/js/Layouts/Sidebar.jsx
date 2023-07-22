@@ -74,6 +74,13 @@ export default function Sidebar() {
                     </div>
 
                     <SideLink
+                        href={route("topsis")}
+                        active={route().current("topsis")}
+                    >
+                        <span className="tracking-wide">Perhitungan</span>
+                    </SideLink>
+
+                    {/* <SideLink
                         href={route("matrix")}
                         active={route().current("matrix")}
                     >
@@ -122,7 +129,7 @@ export default function Sidebar() {
                         active={route().current("ranking")}
                     >
                         <span className="tracking-wide">Ranking</span>
-                    </SideLink>
+                    </SideLink> */}
                 </nav>
             </div>
         </div>
