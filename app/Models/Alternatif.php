@@ -17,4 +17,9 @@ class Alternatif extends Model
     {
         return $this->belongsToMany(Kriteria::class, 'alternatif_kriteria')->withPivot('sub_kriteria_id', 'nilai');
     }
+
+    public function subKriteria(): BelongsToMany
+    {
+        return $this->belongsToMany(SubKriteria::class, 'alternatif_kriteria');
+    }
 }

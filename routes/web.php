@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AlternatifController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\TopsisController;
 use App\Http\Controllers\UserController;
@@ -38,6 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('alternatif', AlternatifController::class)->except('show');
 
     // TOPSIS
+    Route::get('topsis', [PerhitunganController::class, 'topsis'])->name('topsis');
     Route::get('matrix', [TopsisController::class, 'matrix'])->name('matrix');
     Route::get('normalisasi-matrix', [TopsisController::class, 'stepOne'])->name('normalisasi-matrix');
     Route::get('normalisasi-matrix-terbobot', [TopsisController::class, 'stepTwo'])->name('normalisasi-matrix-terbobot');
